@@ -147,6 +147,7 @@
   justify-content: center;
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-xl);
+  color: white;
 }
 
 .skill-title {
@@ -194,6 +195,7 @@
   justify-content: center;
   flex-shrink: 0;
   font-size: var(--font-size-base);
+  color: white;
 }
 
 .value-text {

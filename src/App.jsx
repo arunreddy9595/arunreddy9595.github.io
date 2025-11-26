@@ -117,7 +117,7 @@ function App() {
             <div className="skills-grid">
               {skills.map((skill) => (
                 <div key={skill.title} className="skill-card">
-                  <div className="skill-icon" style={{ color: 'white' }}>
+                  <div className="skill-icon">
                     {skill.icon}
                   </div>
                   <h3 className="skill-title">{skill.title}</h3>
@@ -133,7 +133,7 @@ function App() {
             <ul className="values-list">
               {values.map((value) => (
                 <li key={value} className="value-item">
-                  <span className="value-icon" style={{ color: 'white' }}>
+                  <span className="value-icon">
                     <CheckIcon />
                   </span>
                   <span className="value-text">{value}</span>
