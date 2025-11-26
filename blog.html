@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ultracoder.me — Blog</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 900px; margin: 4rem auto; padding: 0 1rem; line-height: 1.6; color: #111; }
+    header { margin-bottom: 1.5rem; }
+    h1 { margin: 0 0 .25rem 0; font-size: 2rem; }
+    p.lead { margin: .25rem 0 1.25rem 0; color: #444; }
+    footer { margin-top: 2.5rem; color: #666; font-size: .9rem; }
+    nav { margin-bottom: 1.5rem; }
+    nav a { margin-right: 1rem; color: #2563eb; text-decoration: none; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    nav a.active { border-bottom: 2px solid #2563eb; }
+    .blog-post { background: #f9fafb; border-radius: .5rem; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid #2563eb; }
+    .blog-post h2 { margin: 0 0 .5rem 0; color: #111; font-size: 1.5rem; }
+    .blog-post .meta { color: #666; font-size: .9rem; margin-bottom: .75rem; }
+    .blog-post .tag { background: #2563eb; color: white; padding: .15rem .5rem; border-radius: .25rem; font-size: .8rem; margin-right: .5rem; }
+    .blog-post p { margin: .75rem 0; color: #333; }
+    .blog-post code { background: #e5e7eb; padding: .15rem .35rem; border-radius: .25rem; font-family: "Consolas", "Monaco", monospace; font-size: .9rem; }
+    .blog-intro { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: .5rem; padding: 1.5rem; margin-bottom: 2rem; }
+    .blog-intro h2 { margin: 0 0 .5rem 0; }
+    .blog-intro p { margin: 0; opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="blog.html" class="active">Blog</a>
+  </nav>
+
+  <header>
+    <h1>Blog</h1>
+    <p class="lead">Updates on coding, Java technologies, and best practices in software development.</p>
+  </header>
+
+  <div class="blog-intro">
+    <h2>Welcome to my Tech Blog</h2>
+    <p>Here I share my thoughts on Java, Spring Boot, and modern software development practices. Stay tuned for regular updates!</p>
+  </div>
+
+  <article class="blog-post">
+    <h2>Getting Started with Spring Boot 3</h2>
+    <div class="meta">
+      <span class="tag">Java</span>
+      <span class="tag">Spring Boot</span>
+      November 2024
+    </div>
+    <p>Spring Boot 3 brings exciting new features including native compilation support with GraalVM and improved observability. The migration from Spring Boot 2.x requires updating to Java 17 or later and addressing some breaking changes.</p>
+    <p>Key highlights include:</p>
+    <ul>
+      <li>Native image support with <code>spring-boot-starter-aot</code></li>
+      <li>Jakarta EE 9+ migration (javax.* to jakarta.*)</li>
+      <li>Improved Micrometer integration for metrics</li>
+      <li>Enhanced security defaults</li>
+    </ul>
+    <p>Stay tuned for a detailed migration guide!</p>
+  </article>
+
+  <article class="blog-post">
+    <h2>Virtual Threads in Java 21</h2>
+    <div class="meta">
+      <span class="tag">Java</span>
+      <span class="tag">Concurrency</span>
+      October 2024
+    </div>
+    <p>Java 21 introduces Virtual Threads (Project Loom), a game-changer for concurrent programming. Virtual threads are lightweight threads that dramatically reduce the resource overhead of traditional platform threads.</p>
+    <p>With <code>Thread.ofVirtual().start()</code>, you can now create millions of threads without worrying about memory constraints. This is especially useful for I/O-bound applications and microservices that need to handle thousands of concurrent requests.</p>
+    <p>Spring Boot 3.2 integrates seamlessly with virtual threads, making it easier than ever to build highly scalable applications.</p>
+  </article>
+
+  <article class="blog-post">
+    <h2>Best Practices for REST API Design</h2>
+    <div class="meta">
+      <span class="tag">REST</span>
+      <span class="tag">API Design</span>
+      September 2024
+    </div>
+    <p>Designing clean, consistent REST APIs is crucial for building maintainable systems. Here are some key principles I follow:</p>
+    <ul>
+      <li>Use meaningful resource names (nouns, not verbs)</li>
+      <li>Leverage HTTP methods correctly (GET, POST, PUT, DELETE, PATCH)</li>
+      <li>Return appropriate status codes</li>
+      <li>Implement proper error handling with clear messages</li>
+      <li>Version your APIs from the start</li>
+      <li>Document with OpenAPI/Swagger</li>
+    </ul>
+    <p>In Spring Boot, use <code>@RestController</code> with clear endpoint mappings and consider using <code>@ControllerAdvice</code> for centralized exception handling.</p>
+  </article>
+
+  <article class="blog-post">
+    <h2>Testing Spring Boot Applications</h2>
+    <div class="meta">
+      <span class="tag">Testing</span>
+      <span class="tag">Spring Boot</span>
+      August 2024
+    </div>
+    <p>Good tests are essential for maintaining code quality. Spring Boot provides excellent testing support:</p>
+    <ul>
+      <li><code>@SpringBootTest</code> for integration tests</li>
+      <li><code>@WebMvcTest</code> for controller layer tests</li>
+      <li><code>@DataJpaTest</code> for repository tests</li>
+      <li>MockMvc for testing REST endpoints</li>
+      <li>Testcontainers for database integration tests</li>
+    </ul>
+    <p>Always aim for a good balance between unit tests, integration tests, and end-to-end tests. The testing pyramid is still relevant!</p>
+  </article>
+
+  <footer>
+    <p>If you want to reach me, visit my GitHub profile: <a href="https://github.com/arunreddy9595">github.com/arunreddy9595</a></p>
+  </footer>
+</body>
+</html>
