@@ -11,13 +11,61 @@
     p.lead { margin: .25rem 0 1.25rem 0; color: #444; }
     .tech { background:#f3f4f6; border-radius: .5rem; padding: .5rem .75rem; display:inline-block; margin-top:.5rem; }
     footer { margin-top: 2.5rem; color: #666; font-size: .9rem; }
+    nav { margin-bottom: 1.5rem; }
+    nav a { margin-right: 1rem; color: #2563eb; text-decoration: none; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    nav a.active { border-bottom: 2px solid #2563eb; }
+    .experience-summary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: .5rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .experience-summary h3 { margin: 0 0 .5rem 0; }
+    .years-badge { font-size: 2rem; font-weight: bold; }
+    .experience-item { background: #f9fafb; border-radius: .5rem; padding: 1rem; margin-bottom: 1rem; border-left: 3px solid #2563eb; }
+    .experience-item h4 { margin: 0 0 .25rem 0; color: #111; }
+    .experience-item .company { color: #2563eb; font-weight: 500; }
+    .experience-item .period { color: #666; font-size: .9rem; }
+    .experience-item p { margin: .5rem 0 0 0; color: #444; }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html" class="active">About</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+
   <header>
-    <h1>Hi — I’m Arun (ultracoder)</h1>
-    <p class="lead">I build clean, maintainable backend systems and APIs. I’m passionate about Java and Spring Boot.</p>
+    <h1>Hi — I'm Arun (ultracoder)</h1>
+    <p class="lead">I build clean, maintainable backend systems and APIs. I'm passionate about Java and Spring Boot.</p>
   </header>
+
+  <section>
+    <h2>Work Experience</h2>
+    
+    <div class="experience-summary">
+      <h3>Professional Experience</h3>
+      <p><span class="years-badge">5+</span> years of experience in software development</p>
+      <p>Specializing in Java, Spring Boot, and backend systems</p>
+    </div>
+
+    <div class="experience-item">
+      <h4>Senior Software Engineer</h4>
+      <span class="company">Tech Company</span>
+      <div class="period">2021 - Present</div>
+      <p>Building scalable microservices and REST APIs using Java and Spring Boot. Leading technical decisions and mentoring junior developers.</p>
+    </div>
+
+    <div class="experience-item">
+      <h4>Software Engineer</h4>
+      <span class="company">Previous Company</span>
+      <div class="period">2019 - 2021</div>
+      <p>Developed backend services and data pipelines. Worked with Spring Data, SQL databases, and message queues.</p>
+    </div>
+
+    <div class="experience-item">
+      <h4>Junior Developer</h4>
+      <span class="company">Startup Inc.</span>
+      <div class="period">2018 - 2019</div>
+      <p>Started my professional journey building web applications with Java EE and learning best practices in software development.</p>
+    </div>
+  </section>
 
   <section>
     <h2>About me</h2>
