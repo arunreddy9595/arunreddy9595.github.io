@@ -292,7 +292,7 @@ function App() {
           <section className="section">
             <h2 className="section-title">
               <BriefcaseIcon />
-              <span style={{ marginLeft: '10px' }}>Work Experience</span>
+              <span className="section-title-text">Work Experience</span>
             </h2>
             <div className="experience-list">
               {experiences.map((exp, index) => (
@@ -315,7 +315,7 @@ function App() {
                   </ul>
                   <div className="experience-tech">
                     <strong>Technologies:</strong>
-                    <div className="tech-stack" style={{ marginTop: '8px' }}>
+                    <div className="tech-stack tech-stack-spaced">
                       {exp.technologies.map((tech) => (
                         <span key={tech} className="tech-tag tech-tag-small">{tech}</span>
                       ))}
@@ -330,7 +330,7 @@ function App() {
           <section className="section">
             <h2 className="section-title">
               <AcademicIcon />
-              <span style={{ marginLeft: '10px' }}>Education</span>
+              <span className="section-title-text">Education</span>
             </h2>
             <div className="education-grid">
               {education.map((edu, index) => (

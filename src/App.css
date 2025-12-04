@@ -136,6 +136,10 @@
   color: var(--color-primary);
 }
 
+.section-title-text {
+  margin-left: 10px;
+}
+
 .section-content {
   color: var(--color-text-secondary);
   font-size: var(--font-size-lg);
@@ -278,6 +282,10 @@
 .tech-tag-small {
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-xs);
+}
+
+.tech-stack-spaced {
+  margin-top: var(--spacing-sm);
 }
 
 /* Experience Section */
