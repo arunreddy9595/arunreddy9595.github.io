@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--spacing-lg);
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   font-weight: 700;
   border: 3px solid rgba(255, 255, 255, 0.3);
 }
@@ -57,8 +57,41 @@
   font-size: var(--font-size-lg);
   opacity: 0.9;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto var(--spacing-lg);
   line-height: 1.6;
+}
+
+/* Contact Bar */
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: white;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(5px);
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.contact-item svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* Main Content */
@@ -82,7 +115,8 @@
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-lg);
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 }
 
 .section-title::after {
@@ -94,6 +128,12 @@
   height: 3px;
   background: var(--gradient-primary);
   border-radius: var(--radius-full);
+}
+
+.section-title svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
 }
 
 .section-content {
@@ -114,6 +154,35 @@
 .about-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+}
+
+/* Summary List */
+.summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.summary-bullet {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 2px;
 }
 
 /* Skills Section */
@@ -162,45 +231,27 @@
   font-size: var(--font-size-sm);
 }
 
-/* Values Section */
-.values-list {
-  list-style: none;
+/* Technical Skills Grid */
+.tech-skills-grid {
   display: grid;
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
 }
 
-.value-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md);
+.tech-category {
   background: var(--color-bg-secondary);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
   border: 1px solid var(--color-border);
-  transition: all var(--transition-base);
 }
 
-.value-item:hover {
-  border-color: var(--color-primary-light);
-  background: var(--color-bg-tertiary);
-}
-
-.value-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.tech-category-title {
   font-size: var(--font-size-base);
-  color: white;
-}
-
-.value-text {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-primary);
 }
 
 /* Tech Stack */
@@ -208,13 +259,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
 }
 
 .tech-tag {
   background: var(--gradient-primary);
   color: white;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: 500;
@@ -223,6 +273,176 @@
 
 .tech-tag:hover {
   transform: scale(1.05);
+}
+
+.tech-tag-small {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+}
+
+/* Experience Section */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.experience-card {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.experience-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .experience-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.experience-title-group {
+  flex: 1;
+}
+
+.experience-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.experience-company {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+}
+
+.experience-client {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+.experience-period {
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.experience-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.experience-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.highlight-bullet {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 2px;
+}
+
+.highlight-bullet svg {
+  width: 12px;
+  height: 12px;
+}
+
+.experience-tech {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Education Section */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.education-card {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.education-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.education-degree {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.education-institution {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-sm);
+}
+
+.education-year {
+  display: inline-block;
+  background: var(--color-bg-tertiary);
+  color: var(--color-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
 }
 
 /* Footer */
@@ -317,7 +537,7 @@
   .header-avatar {
     width: 100px;
     height: 100px;
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
   
   .section-title {
@@ -330,5 +550,27 @@
   
   .skill-card {
     padding: var(--spacing-md);
+  }
+  
+  .contact-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-item span {
+    display: none;
+  }
+  
+  .contact-item svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .experience-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .tech-skills-grid {
+    grid-template-columns: 1fr;
   }
 }
