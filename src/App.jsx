@@ -211,18 +211,18 @@ function App() {
           <div className="header-avatar">ARS</div>
           <h1 className="header-title animate-fade-in-up">Arunkumar Reddy Singireddy</h1>
           <p className="header-subtitle animate-fade-in-up animate-delay-1">
-            Full Stack Java Developer | 8+ Years of Experience
+            Full Stack Java Developer | 9+ Years of Experience
           </p>
           
           {/* Contact Info */}
           <div className="contact-bar animate-fade-in-up animate-delay-2">
             <a href="mailto:asingireddy25@gmail.com" className="contact-item">
               <EmailIcon />
-              <span>asingireddy25@gmail.com</span>
+              <span>arunsingireddy95@gmail.com</span>
             </a>
-            <a href="tel:+14752096035" className="contact-item">
+            <a href="tel:+17326307465" className="contact-item">
               <PhoneIcon />
-              <span>(475) 209-6035</span>
+              <span>(732) 630-7465</span>
             </a>
             <a href="https://www.linkedin.com/in/arun-singireddy-39560a253/" target="_blank" rel="noopener noreferrer" className="contact-item">
               <LinkedInIcon />
