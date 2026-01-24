@@ -108,6 +108,30 @@ const ChartIcon = () => (
   </svg>
 )
 
+const CertificateIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+  </svg>
+)
+
+const ArrowUpIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+  </svg>
+)
+
+const MenuIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  </svg>
+)
+
+const CloseIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+  </svg>
+)
+
 const RocketIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
@@ -197,6 +221,37 @@ const technicalSkills = {
   'Version Control': ['Git', 'SVN', 'Bitbucket', 'GitHub'],
   'IDEs & Tools': ['IntelliJ', 'Eclipse', 'VS Code', 'JIRA', 'Maven', 'Gradle']
 }
+
+// Certifications data
+const certifications = [
+  {
+    id: 1,
+    name: 'Azure Fundamentals',
+    issuer: 'Microsoft',
+    issued: 'AZ-900',
+    logo: '☁️',
+    color: '#0078D4',
+    pdfPath: '/certificates/AzureFundamentals.pdf'
+  },
+  {
+    id: 2,
+    name: 'CompTIA A+',
+    issuer: 'CompTIA',
+    issued: 'Core 1 & Core 2',
+    logo: '🔧',
+    color: '#C8102E',
+    pdfPath: '/certificates/CompTIA A+ ce certificate.pdf'
+  },
+  {
+    id: 3,
+    name: 'Fortinet NSE 1',
+    issuer: 'Fortinet',
+    issued: 'Network Security',
+    logo: '🔒',
+    color: '#EE3124',
+    pdfPath: '/certificates/NSE_1_Certificate.pdf'
+  }
+]
 
 // Education data
 const education = [
@@ -652,6 +707,9 @@ function App() {
     return saved ? JSON.parse(saved) : window.matchMedia('(prefers-color-scheme: dark)').matches
   })
   const [activeSection, setActiveSection] = useState('home')
+  const [showBackToTop, setShowBackToTop] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     document.documentElement.classList.remove('dark-mode', 'light-mode')
@@ -663,10 +721,41 @@ function App() {
     localStorage.setItem('darkMode', JSON.stringify(darkMode))
   }, [darkMode])
 
+  // Loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog', 'contact']
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'certifications', 'testimonials', 'education', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
+
+      // Show/hide back to top button
+      setShowBackToTop(window.scrollY > 500)
+
+      // Check if we're near the bottom of the page
+      const isNearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100
+
+      if (isNearBottom) {
+        setActiveSection('contact')
+        return
+      }
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -681,6 +770,7 @@ function App() {
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Call once on mount
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -690,27 +780,60 @@ function App() {
       const offset = 80
       const elementPosition = element.offsetTop - offset
       window.scrollTo({ top: elementPosition, behavior: 'smooth' })
+      setMobileMenuOpen(false) // Close mobile menu after navigation
     }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  if (isLoading) {
+    return (
+      <div className="loader-container">
+        <div className="loader">
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-text">ultracoder</div>
+        </div>
+      </div>
+    )
   }
 
   return (
     <>
-      {/* Dark Mode Toggle */}
-      <button 
-        className="theme-toggle" 
-        onClick={() => setDarkMode(!darkMode)}
-        aria-label="Toggle dark mode"
-      >
-        {darkMode ? <SunIcon /> : <MoonIcon />}
-      </button>
+      {/* Mobile Menu Backdrop */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-menu-backdrop"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
 
       {/* Sticky Navigation */}
       <nav className="navbar">
         <div className="container">
           <div className="navbar-content">
             <div className="navbar-brand">AS</div>
-            <div className="navbar-links">
-              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog', 'contact'].map((section) => (
+            <div className="navbar-controls">
+              <button 
+                className="theme-toggle-mobile" 
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? <SunIcon /> : <MoonIcon />}
+              </button>
+              <button 
+                className="mobile-menu-toggle"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              </button>
+            </div>
+            <div className={`navbar-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+              {['home', 'about', 'skills', 'experience', 'projects', 'certifications', 'testimonials', 'education', 'blog', 'contact'].map((section) => (
                 <button
                   key={section}
                   className={`navbar-link ${activeSection === section ? 'active' : ''}`}
@@ -933,6 +1056,47 @@ function App() {
             </div>
           </section>
 
+          {/* Certifications Section */}
+          <section className="section" id="certifications">
+            <h2 className="section-title">
+              <CertificateIcon />
+              <span className="section-title-text">Certifications</span>
+            </h2>
+            <div className="certifications-grid">
+              {certifications.map((cert) => (
+                <div key={cert.id} className="certification-card">
+                  <div className="certification-logo" style={{ backgroundColor: cert.color + '20' }}>
+                    <span className="cert-icon" style={{ fontSize: '3rem' }}>{cert.logo}</span>
+                  </div>
+                  <div className="certification-content">
+                    <h3 className="certification-name">{cert.name}</h3>
+                    <p className="certification-issuer">{cert.issuer}</p>
+                    <p className="certification-details">{cert.issued}</p>
+                  </div>
+                  <div className="certification-actions">
+                    <a
+                      href={cert.pdfPath}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-btn cert-btn-view"
+                    >
+                      <ExternalLinkIcon />
+                      <span>View</span>
+                    </a>
+                    <a
+                      href={cert.pdfPath}
+                      download
+                      className="cert-btn cert-btn-download"
+                    >
+                      <DownloadIcon />
+                      <span>Download</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Testimonials Section */}
           <section className="section" id="testimonials">
             <h2 className="section-title">
@@ -1074,6 +1238,15 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Back to Top Button */}
+      <button
+        className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        <ArrowUpIcon />
+      </button>
     </>
   )
 }
