@@ -122,6 +122,12 @@ const ExternalLinkIcon = () => (
   </svg>
 )
 
+const DownloadIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="20" height="20">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+  </svg>
+)
+
 // Skills data - updated to match resume
 const skills = [
   {
@@ -461,7 +467,7 @@ function App() {
       <nav className="navbar">
         <div className="container">
           <div className="navbar-content">
-            <div className="navbar-brand">ARS</div>
+            <div className="navbar-brand">AS</div>
             <div className="navbar-links">
               {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog'].map((section) => (
                 <button
@@ -480,14 +486,26 @@ function App() {
       {/* Header Section */}
       <header className="header" id="home">
         <div className="container header-content">
-          <div className="header-avatar">ARS</div>
+          <div className="header-avatar">AS</div>
           <h1 className="header-title animate-fade-in-up">Arun Singireddy</h1>
           <p className="header-subtitle animate-fade-in-up animate-delay-1">
             Full Stack Java Developer | 9+ Years of Experience
           </p>
           
+          {/* Resume Download Button */}
+          <div className="resume-download animate-fade-in-up animate-delay-2">
+            <a 
+              href="/Arun_Reddy_Singireddy_Resume.html" 
+              download="Arun_Reddy_Singireddy_Resume.html"
+              className="download-resume-btn"
+            >
+              <DownloadIcon />
+              <span>Download Resume</span>
+            </a>
+          </div>
+          
           {/* Contact Info */}
-          <div className="contact-bar animate-fade-in-up animate-delay-2">
+          <div className="contact-bar animate-fade-in-up animate-delay-3">
             <a href="mailto:asingireddy25@gmail.com" className="contact-item">
               <EmailIcon />
               <span>arunsingireddy95@gmail.com</span>
