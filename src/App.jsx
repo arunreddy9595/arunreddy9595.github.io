@@ -418,7 +418,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education']
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -463,7 +463,7 @@ function App() {
           <div className="navbar-content">
             <div className="navbar-brand">ARS</div>
             <div className="navbar-links">
-              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education'].map((section) => (
+              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog'].map((section) => (
                 <button
                   key={section}
                   className={`navbar-link ${activeSection === section ? 'active' : ''}`}
@@ -739,7 +739,7 @@ function App() {
           </section>
 
           {/* Blog Section */}
-          <section className="section">
+          <section className="section" id="blog">
             <h2 className="section-title">
               <DocumentIcon />
               <span className="section-title-text">Blog</span>
