@@ -15,13 +15,13 @@ const ServerIcon = () => (
 
 const DatabaseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m0 3.75c0 2.278 3.694 4.125 8.25 4.125s8.25-1.847 8.25-4.125" />
   </svg>
 )
 
 const ShieldIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
   </svg>
 )
 
@@ -76,6 +76,12 @@ const BriefcaseIcon = () => (
 const AcademicIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+  </svg>
+)
+
+const DocumentIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
   </svg>
 )
 
@@ -202,6 +208,41 @@ const experiences = [
   }
 ]
 
+// Blog data
+const blogPosts = [
+  {
+    title: 'How GitHub Copilot Helped Me Build This Portfolio',
+    date: 'January 24, 2026',
+    excerpt: 'Discover how AI-powered coding assistance transformed my portfolio development experience, from debugging deployment issues to implementing new features.',
+    content: [
+      "Building a portfolio website from scratch can be challenging, especially when you encounter unexpected issues. When I decided to create this portfolio using React and Vite, I had no idea I'd run into a frustrating deployment problem that would showcase the power of GitHub Copilot.",
+      "The first major hurdle I faced was a blank white page after removing Jekyll from my GitHub Pages setup. Despite having a perfectly working local development environment, my deployed site showed nothing but emptiness. This is where GitHub Copilot became invaluable.",
+      "**The Problem:**",
+      "My GitHub Pages was trying to serve raw source files instead of the compiled React application. The browser attempted to load JSX files directly, which it obviously couldn't execute, leaving the page completely blank.",
+      "**How Copilot Helped:**",
+      "Instead of spending hours searching through documentation and Stack Overflow, I simply described my problem to GitHub Copilot. Within seconds, it identified the issue: I needed to switch from branch deployment to GitHub Actions deployment, and configure my Vite build properly.",
+      "Copilot not only explained the problem but also:",
+      "• Reviewed my existing GitHub Actions workflow configuration",
+      "• Suggested the correct Vite base path configuration",
+      "• Provided step-by-step instructions to switch to Actions deployment",
+      "• Even helped me understand why the issue was occurring",
+      "**Adding Features Made Easy:**",
+      "When I wanted to add this blog section to share my experience, Copilot was right there to help again. It analyzed my existing component structure, maintained my design system's consistency, and generated the necessary code while following my established patterns.",
+      "**Key Takeaways:**",
+      "1. **Faster Debugging**: What could have taken hours was resolved in minutes",
+      "2. **Learning While Building**: Copilot explains the 'why' behind solutions",
+      "3. **Consistent Code Quality**: Suggestions match my existing code style",
+      "4. **Confidence Boost**: Having an AI pair programmer reduces anxiety around complex problems",
+      "**The Future of Development:**",
+      "GitHub Copilot isn't just about writing code faster—it's about removing blockers, learning continuously, and building with confidence. Whether you're a seasoned developer or just starting out, having an AI assistant that understands context and provides intelligent suggestions is a game-changer.",
+      "This portfolio stands as proof that with the right tools and persistence, technical challenges become opportunities for growth. GitHub Copilot didn't just help me fix bugs; it helped me build something I'm proud to share with the world.",
+      "**Ready to try it yourself?**",
+      "If you're facing similar challenges or want to level up your development workflow, I highly recommend giving GitHub Copilot a try. It's transformed how I approach problem-solving in my projects."
+    ],
+    tags: ['GitHub Copilot', 'React', 'Vite', 'GitHub Pages', 'AI', 'Developer Tools']
+  }
+]
+
 function App() {
   return (
     <>
@@ -244,7 +285,7 @@ function App() {
           <section className="section">
             <h2 className="section-title">Professional Summary</h2>
             <div className="about-card">
-              <ul className="summary-list">
+              <ul className="summary-list">  
                 {summaryPoints.map((point, index) => (
                   <li key={index} className="summary-item">
                     <span className="summary-bullet"><CheckIcon /></span>
@@ -339,6 +380,35 @@ function App() {
                   <p className="education-institution">{edu.institution}</p>
                   <span className="education-year">{edu.year}</span>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Blog Section */}
+          <section className="section">
+            <h2 className="section-title">
+              <DocumentIcon />
+              <span className="section-title-text">Blog</span>
+            </h2>
+            <div className="blog-list">
+              {blogPosts.map((post, index) => (
+                <article key={index} className="blog-card">
+                  <div className="blog-header">
+                    <h3 className="blog-title">{post.title}</h3>
+                    <time className="blog-date">{post.date}</time>
+                  </div>
+                  <p className="blog-excerpt">{post.excerpt}</p>
+                  <div className="blog-content">
+                    {post.content.map((paragraph, idx) => (
+                      <p key={idx} className="blog-paragraph">{paragraph}</p>
+                    ))}
+                  </div>
+                  <div className="blog-tags">
+                    {post.tags.map((tag) => (
+                      <span key={tag} className="blog-tag">{tag}</span>
+                    ))}
+                  </div>
+                </article>
               ))}
             </div>
           </section>
