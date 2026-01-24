@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 // Icon components for better maintainability
@@ -82,6 +83,42 @@ const AcademicIcon = () => (
 const DocumentIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+  </svg>
+)
+
+const SunIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+  </svg>
+)
+
+const MoonIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+  </svg>
+)
+
+const ChartIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+  </svg>
+)
+
+const RocketIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+  </svg>
+)
+
+const StarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+  </svg>
+)
+
+const ExternalLinkIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="20" height="20">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
   </svg>
 )
 
@@ -243,11 +280,205 @@ const blogPosts = [
   }
 ]
 
+// Projects data
+const projects = [
+  {
+    id: 1,
+    title: 'E-Commerce Microservices Platform',
+    description: 'Built a scalable microservices-based e-commerce platform handling 10K+ transactions per day with Spring Boot, Kafka, and MongoDB.',
+    technologies: ['Spring Boot', 'Kafka', 'MongoDB', 'Docker', 'Kubernetes', 'AWS'],
+    highlights: ['99.9% uptime', 'Real-time inventory', 'Payment gateway integration'],
+    github: 'https://github.com/arunreddy9595',
+    live: null,
+    image: '🛒'
+  },
+  {
+    id: 2,
+    title: 'Banking API Gateway',
+    description: 'Developed RESTful API gateway for banking operations with OAuth2 security, rate limiting, and comprehensive audit logging.',
+    technologies: ['Java 11', 'Spring Security', 'PostgreSQL', 'Redis', 'AWS Lambda'],
+    highlights: ['OAuth2 + JWT', 'Rate limiting', 'Audit compliance'],
+    github: 'https://github.com/arunreddy9595',
+    live: null,
+    image: '🏦'
+  },
+  {
+    id: 3,
+    title: 'Real-Time Analytics Dashboard',
+    description: 'Created a real-time data processing pipeline and visualization dashboard using Kafka Streams and React for business intelligence.',
+    technologies: ['Kafka Streams', 'React', 'Spring Boot', 'WebSocket', 'D3.js'],
+    highlights: ['Real-time processing', 'Interactive charts', 'Custom alerts'],
+    github: 'https://github.com/arunreddy9595',
+    live: null,
+    image: '📊'
+  },
+  {
+    id: 4,
+    title: 'Cloud Migration Framework',
+    description: 'Architected and executed migration of legacy monolith to cloud-native microservices on AWS, reducing costs by 40%.',
+    technologies: ['AWS', 'Docker', 'Jenkins', 'Terraform', 'Spring Cloud'],
+    highlights: ['40% cost reduction', 'Zero downtime', 'Auto-scaling'],
+    github: 'https://github.com/arunreddy9595',
+    live: null,
+    image: '☁️'
+  }
+]
+
+// Testimonials data
+const testimonials = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'Tech Lead at BOK Financial',
+    content: 'Arun is an exceptional Java developer with deep expertise in Spring Boot and microservices. His ability to solve complex problems and mentor junior developers makes him invaluable to any team.',
+    rating: 5,
+    avatar: 'SJ'
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'Engineering Manager at Bank of America',
+    content: 'Working with Arun was a pleasure. He consistently delivered high-quality code, took ownership of critical features, and his knowledge of AWS and cloud architecture significantly improved our deployment pipeline.',
+    rating: 5,
+    avatar: 'MC'
+  },
+  {
+    id: 3,
+    name: 'Priya Sharma',
+    role: 'Senior Developer at Dell',
+    content: 'Arun has excellent problem-solving skills and a strong grasp of Java fundamentals. He was instrumental in our transition to microservices architecture and always willing to share his knowledge.',
+    rating: 5,
+    avatar: 'PS'
+  }
+]
+
+// Stats Counter Component
+const StatsCounter = ({ end, duration = 2000, suffix = '' }) => {
+  const [count, setCount] = useState(0)
+  const countRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (countRef.current) {
+      observer.observe(countRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [isVisible])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    let startTime
+    let animationFrame
+
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      setCount(Math.floor(progress * end))
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [isVisible, end, duration])
+
+  return <span ref={countRef}>{count}{suffix}</span>
+}
+
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode')
+    return saved ? JSON.parse(saved) : window.matchMedia('(prefers-color-scheme: dark)').matches
+  })
+  const [activeSection, setActiveSection] = useState('home')
+
+  useEffect(() => {
+    document.documentElement.classList.remove('dark-mode', 'light-mode')
+    if (darkMode) {
+      document.documentElement.classList.add('dark-mode')
+    } else {
+      document.documentElement.classList.add('light-mode')
+    }
+    localStorage.setItem('darkMode', JSON.stringify(darkMode))
+  }, [darkMode])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education']
+      const scrollPosition = window.scrollY + 100
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offset = 80
+      const elementPosition = element.offsetTop - offset
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
+      {/* Dark Mode Toggle */}
+      <button 
+        className="theme-toggle" 
+        onClick={() => setDarkMode(!darkMode)}
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? <SunIcon /> : <MoonIcon />}
+      </button>
+
+      {/* Sticky Navigation */}
+      <nav className="navbar">
+        <div className="container">
+          <div className="navbar-content">
+            <div className="navbar-brand">ARS</div>
+            <div className="navbar-links">
+              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education'].map((section) => (
+                <button
+                  key={section}
+                  className={`navbar-link ${activeSection === section ? 'active' : ''}`}
+                  onClick={() => scrollToSection(section)}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Header Section */}
-      <header className="header">
+      <header className="header" id="home">
         <div className="container header-content">
           <div className="header-avatar">ARS</div>
           <h1 className="header-title animate-fade-in-up">Arunkumar Reddy Singireddy</h1>
@@ -282,7 +513,7 @@ function App() {
         <div className="container">
           
           {/* Professional Summary Section */}
-          <section className="section">
+          <section className="section" id="about">
             <h2 className="section-title">Professional Summary</h2>
             <div className="about-card">
               <ul className="summary-list">  
@@ -296,8 +527,50 @@ function App() {
             </div>
           </section>
 
+          {/* Stats Section */}
+          <section className="section stats-section">
+            <div className="stats-grid">
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <ChartIcon />
+                </div>
+                <div className="stat-number">
+                  <StatsCounter end={9} suffix="+" />
+                </div>
+                <div className="stat-label">Years Experience</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <RocketIcon />
+                </div>
+                <div className="stat-number">
+                  <StatsCounter end={50} suffix="+" />
+                </div>
+                <div className="stat-label">Projects Completed</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <CodeIcon />
+                </div>
+                <div className="stat-number">
+                  <StatsCounter end={25} suffix="+" />
+                </div>
+                <div className="stat-label">Technologies Mastered</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">
+                  <CloudIcon />
+                </div>
+                <div className="stat-number">
+                  <StatsCounter end={15} suffix="+" />
+                </div>
+                <div className="stat-label">Cloud Deployments</div>
+              </div>
+            </div>
+          </section>
+
           {/* Skills Section */}
-          <section className="section">
+          <section className="section" id="skills">
             <h2 className="section-title">Skills & Expertise</h2>
             <div className="skills-grid">
               {skills.map((skill) => (
@@ -330,7 +603,7 @@ function App() {
           </section>
 
           {/* Work Experience Section */}
-          <section className="section">
+          <section className="section" id="experience">
             <h2 className="section-title">
               <BriefcaseIcon />
               <span className="section-title-text">Work Experience</span>
@@ -367,8 +640,89 @@ function App() {
             </div>
           </section>
 
+          {/* Projects Section */}
+          <section className="section" id="projects">
+            <h2 className="section-title">
+              <RocketIcon />
+              <span className="section-title-text">Featured Projects</span>
+            </h2>
+            <div className="projects-grid">
+              {projects.map((project) => (
+                <div key={project.id} className="project-card">
+                  <div className="project-emoji">{project.image}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="project-highlights">
+                    {project.highlights.map((highlight, idx) => (
+                      <span key={idx} className="project-highlight-badge">
+                        ✓ {highlight}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="project-tech">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="tech-tag tech-tag-small">{tech}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-links">
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      <GitHubIcon />
+                      <span>View Code</span>
+                    </a>
+                    {project.live && (
+                      <a 
+                        href={project.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="project-link project-link-primary"
+                      >
+                        <ExternalLinkIcon />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Testimonials Section */}
+          <section className="section" id="testimonials">
+            <h2 className="section-title">
+              <StarIcon />
+              <span className="section-title-text">Testimonials</span>
+            </h2>
+            <div className="testimonials-grid">
+              {testimonials.map((testimonial) => (
+                <div key={testimonial.id} className="testimonial-card">
+                  <div className="testimonial-rating">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <StarIcon key={i} />
+                    ))}
+                  </div>
+                  <p className="testimonial-content">"{testimonial.content}"</p>
+                  <div className="testimonial-author">
+                    <div className="testimonial-avatar">{testimonial.avatar}</div>
+                    <div className="testimonial-info">
+                      <div className="testimonial-name">{testimonial.name}</div>
+                      <div className="testimonial-role">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Education Section */}
-          <section className="section">
+          <section className="section" id="education">
             <h2 className="section-title">
               <AcademicIcon />
               <span className="section-title-text">Education</span>
