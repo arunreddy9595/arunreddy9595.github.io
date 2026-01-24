@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './App.css'
+
+// Initialize EmailJS with public key
+emailjs.init('Vi-fCaIPPqbyyiY8P')
 
 // Icon components for better maintainability
 const CodeIcon = () => (
@@ -125,6 +129,12 @@ const ExternalLinkIcon = () => (
 const DownloadIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="20" height="20">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+  </svg>
+)
+
+const PaperPlaneIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" width="24" height="24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
   </svg>
 )
 
@@ -358,6 +368,42 @@ const testimonials = [
   }
 ]
 
+// Custom hook for scroll animations
+const useAnimateOnScroll = (options = {}) => {
+  const elementRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          // Once visible, stop observing
+          if (elementRef.current) {
+            observer.unobserve(elementRef.current)
+          }
+        }
+      },
+      {
+        threshold: options.threshold || 0.1,
+        rootMargin: options.rootMargin || '0px'
+      }
+    )
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current)
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current)
+      }
+    }
+  }, [])
+
+  return [elementRef, isVisible]
+}
+
 // Stats Counter Component
 const StatsCounter = ({ end, duration = 2000, suffix = '' }) => {
   const [count, setCount] = useState(0)
@@ -405,6 +451,201 @@ const StatsCounter = ({ end, duration = 2000, suffix = '' }) => {
   return <span ref={countRef}>{count}{suffix}</span>
 }
 
+// Contact Form Component
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [status, setStatus] = useState({ type: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setStatus({ type: '', message: '' })
+
+    // Simple form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus({ type: 'error', message: 'Please fill in all required fields.' })
+      setIsSubmitting(false)
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' })
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Contact Form Submission',
+        message: formData.message,
+        reply_to: formData.email
+      }
+
+      console.log('Sending email with params:', templateParams)
+
+      // Send main contact email
+      const response = await emailjs.send(
+        'service_ayp4hnf',
+        'template_z5eminq',
+        templateParams
+      )
+      console.log('Contact email sent:', response)
+      
+      setStatus({ 
+        type: 'success', 
+        message: 'Thank you for your message! I will get back to you soon.' 
+      })
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      console.error('EmailJS Error Details:', {
+        message: error.message || error.text,
+        status: error.status,
+        error: error
+      })
+      
+      let errorMessage = 'Oops! Something went wrong. '
+      if (error.text) {
+        errorMessage += `Error: ${error.text}. `
+      }
+      errorMessage += 'Please try again or email me directly at arunsingireddy95@gmail.com'
+      
+      setStatus({ 
+        type: 'error', 
+        message: errorMessage
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-grid">
+        <div className="form-group">
+          <label htmlFor="name">Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+            disabled={isSubmitting}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="your.email@example.com"
+            disabled={isSubmitting}
+          />
+        </div>
+      </div>
+      <div className="form-group">
+        <label htmlFor="subject">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          placeholder="What's this about?"
+          disabled={isSubmitting}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="message">Message *</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Your message..."
+          rows="6"
+          disabled={isSubmitting}
+        />
+      </div>
+      {status.message && (
+        <div className={`form-status ${status.type}`}>
+          {status.message}
+        </div>
+      )}
+      <button type="submit" className="submit-btn" disabled={isSubmitting}>
+        <PaperPlaneIcon />
+        <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+      </button>
+    </form>
+  )
+}
+
+// Timeline Item Component
+const TimelineItem = ({ exp, index, totalItems }) => {
+  const [ref, isVisible] = useAnimateOnScroll({ threshold: 0.2 })
+  
+  return (
+    <div 
+      ref={ref}
+      className={`timeline-item ${isVisible ? 'animate-in' : ''}`}
+    >
+      <div className="timeline-marker">
+        <div className="timeline-dot"></div>
+        {index < totalItems - 1 && <div className="timeline-line"></div>}
+      </div>
+      <div className="timeline-content">
+        <div className="timeline-card">
+          <div className="timeline-header">
+            <div className="timeline-title-group">
+              <h3 className="timeline-title">{exp.title}</h3>
+              <p className="timeline-company">{exp.company}</p>
+              {exp.client && <p className="timeline-client">Client: {exp.client}</p>}
+            </div>
+            <span className="timeline-period">{exp.period}</span>
+          </div>
+          <ul className="timeline-highlights">
+            {exp.highlights.map((highlight, idx) => (
+              <li key={idx} className="timeline-highlight">
+                <span className="highlight-bullet"><CheckIcon /></span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="timeline-tech">
+            <strong>Technologies:</strong>
+            <div className="tech-stack tech-stack-spaced">
+              {exp.technologies.map((tech) => (
+                <span key={tech} className="tech-tag tech-tag-small">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode')
@@ -424,7 +665,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog']
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -469,7 +710,7 @@ function App() {
           <div className="navbar-content">
             <div className="navbar-brand">AS</div>
             <div className="navbar-links">
-              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog'].map((section) => (
+              {['home', 'about', 'skills', 'experience', 'projects', 'testimonials', 'education', 'blog', 'contact'].map((section) => (
                 <button
                   key={section}
                   className={`navbar-link ${activeSection === section ? 'active' : ''}`}
@@ -626,34 +867,14 @@ function App() {
               <BriefcaseIcon />
               <span className="section-title-text">Work Experience</span>
             </h2>
-            <div className="experience-list">
+            <div className="timeline">
               {experiences.map((exp, index) => (
-                <div key={index} className="experience-card">
-                  <div className="experience-header">
-                    <div className="experience-title-group">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <p className="experience-company">{exp.company}</p>
-                      {exp.client && <p className="experience-client">Client: {exp.client}</p>}
-                    </div>
-                    <span className="experience-period">{exp.period}</span>
-                  </div>
-                  <ul className="experience-highlights">
-                    {exp.highlights.map((highlight, idx) => (
-                      <li key={idx} className="experience-highlight">
-                        <span className="highlight-bullet"><CheckIcon /></span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="experience-tech">
-                    <strong>Technologies:</strong>
-                    <div className="tech-stack tech-stack-spaced">
-                      {exp.technologies.map((tech) => (
-                        <span key={tech} className="tech-tag tech-tag-small">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <TimelineItem 
+                  key={index} 
+                  exp={exp} 
+                  index={index}
+                  totalItems={experiences.length}
+                />
               ))}
             </div>
           </section>
@@ -782,6 +1003,37 @@ function App() {
                   </div>
                 </article>
               ))}
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section className="section" id="contact">
+            <h2 className="section-title">
+              <PaperPlaneIcon />
+              <span className="section-title-text">Get In Touch</span>
+            </h2>
+            <div className="contact-container">
+              <div className="contact-intro">
+                <h3>Let's Work Together</h3>
+                <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                <div className="contact-methods">
+                  <div className="contact-method">
+                    <EmailIcon />
+                    <div>
+                      <strong>Email</strong>
+                      <a href="mailto:arunsingireddy95@gmail.com">arunsingireddy95@gmail.com</a>
+                    </div>
+                  </div>
+                  <div className="contact-method">
+                    <PhoneIcon />
+                    <div>
+                      <strong>Phone</strong>
+                      <a href="tel:+17326307465">(732) 630-7465</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ContactForm />
             </div>
           </section>
         </div>
