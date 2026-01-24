@@ -481,7 +481,7 @@ function App() {
       <header className="header" id="home">
         <div className="container header-content">
           <div className="header-avatar">ARS</div>
-          <h1 className="header-title animate-fade-in-up">Arunkumar Reddy Singireddy</h1>
+          <h1 className="header-title animate-fade-in-up">Arun Singireddy</h1>
           <p className="header-subtitle animate-fade-in-up animate-delay-1">
             Full Stack Java Developer | 9+ Years of Experience
           </p>
@@ -800,7 +800,7 @@ function App() {
             </a>
           </div>
           <p className="footer-text">
-            &copy; {new Date().getFullYear()} Arunkumar Reddy Singireddy. Open to new opportunities.
+            &copy; {new Date().getFullYear()} Arun Singireddy. Open to new opportunities.
           </p>
         </div>
       </footer>
