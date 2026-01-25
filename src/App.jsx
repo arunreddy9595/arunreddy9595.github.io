@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import { blogPosts } from './blogData'
 import './App.css'
 
 // Initialize EmailJS with public key
@@ -317,40 +318,6 @@ const experiences = [
 ]
 
 // Blog data
-const blogPosts = [
-  {
-    title: 'How GitHub Copilot Helped Me Build This Portfolio',
-    date: 'January 24, 2026',
-    excerpt: 'Discover how AI-powered coding assistance transformed my portfolio development experience, from debugging deployment issues to implementing new features.',
-    content: [
-      "Building a portfolio website from scratch can be challenging, especially when you encounter unexpected issues. When I decided to create this portfolio using React and Vite, I had no idea I'd run into a frustrating deployment problem that would showcase the power of GitHub Copilot.",
-      "The first major hurdle I faced was a blank white page after removing Jekyll from my GitHub Pages setup. Despite having a perfectly working local development environment, my deployed site showed nothing but emptiness. This is where GitHub Copilot became invaluable.",
-      "**The Problem:**",
-      "My GitHub Pages was trying to serve raw source files instead of the compiled React application. The browser attempted to load JSX files directly, which it obviously couldn't execute, leaving the page completely blank.",
-      "**How Copilot Helped:**",
-      "Instead of spending hours searching through documentation and Stack Overflow, I simply described my problem to GitHub Copilot. Within seconds, it identified the issue: I needed to switch from branch deployment to GitHub Actions deployment, and configure my Vite build properly.",
-      "Copilot not only explained the problem but also:",
-      "• Reviewed my existing GitHub Actions workflow configuration",
-      "• Suggested the correct Vite base path configuration",
-      "• Provided step-by-step instructions to switch to Actions deployment",
-      "• Even helped me understand why the issue was occurring",
-      "**Adding Features Made Easy:**",
-      "When I wanted to add this blog section to share my experience, Copilot was right there to help again. It analyzed my existing component structure, maintained my design system's consistency, and generated the necessary code while following my established patterns.",
-      "**Key Takeaways:**",
-      "1. **Faster Debugging**: What could have taken hours was resolved in minutes",
-      "2. **Learning While Building**: Copilot explains the 'why' behind solutions",
-      "3. **Consistent Code Quality**: Suggestions match my existing code style",
-      "4. **Confidence Boost**: Having an AI pair programmer reduces anxiety around complex problems",
-      "**The Future of Development:**",
-      "GitHub Copilot isn't just about writing code faster—it's about removing blockers, learning continuously, and building with confidence. Whether you're a seasoned developer or just starting out, having an AI assistant that understands context and provides intelligent suggestions is a game-changer.",
-      "This portfolio stands as proof that with the right tools and persistence, technical challenges become opportunities for growth. GitHub Copilot didn't just help me fix bugs; it helped me build something I'm proud to share with the world.",
-      "**Ready to try it yourself?**",
-      "If you're facing similar challenges or want to level up your development workflow, I highly recommend giving GitHub Copilot a try. It's transformed how I approach problem-solving in my projects."
-    ],
-    tags: ['GitHub Copilot', 'React', 'Vite', 'GitHub Pages', 'AI', 'Developer Tools']
-  }
-]
-
 // Projects data
 const projects = [
   {
@@ -1155,15 +1122,14 @@ function App() {
                     <time className="blog-date">{post.date}</time>
                   </div>
                   <p className="blog-excerpt">{post.excerpt}</p>
-                  <div className="blog-content">
-                    {post.content.map((paragraph, idx) => (
-                      <p key={idx} className="blog-paragraph">{paragraph}</p>
-                    ))}
-                  </div>
-                  <div className="blog-tags">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="blog-tag">{tag}</span>
-                    ))}
+                  <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
+                  <div className="blog-footer">
+                    <span className="blog-read-time">{post.readTime}</span>
+                    <div className="blog-tags">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="blog-tag">{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </article>
               ))}
