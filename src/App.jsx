@@ -951,6 +951,59 @@ function App() {
             </div>
           </section>
 
+          {/* GitHub Contributions Section */}
+          <section className="section github-section">
+            <h2 className="section-title">
+              <GitHubIcon />
+              <span className="section-title-text">GitHub Activity</span>
+            </h2>
+            <div className="github-stats-container">
+              <div className="github-stats-grid">
+                {/* GitHub Stats Card */}
+                <div className="github-stat-card">
+                  <img 
+                    src="https://github-readme-stats.vercel.app/api?username=arunreddy9595&show_icons=true&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4&icon_color=89b4fa"
+                    alt="Arun's GitHub Stats"
+                    loading="lazy"
+                  />
+                </div>
+                
+                {/* Top Languages Card */}
+                <div className="github-stat-card">
+                  <img 
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=arunreddy9595&layout=compact&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4"
+                    alt="Top Languages"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              {/* GitHub Streak Stats */}
+              <div className="github-streak">
+                <img 
+                  src="https://github-readme-streak-stats.herokuapp.com/?user=arunreddy9595&theme=dark&hide_border=true&background=1e1e2e&ring=89b4fa&fire=f38ba8&currStreakLabel=cdd6f4"
+                  alt="GitHub Streak Stats"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* GitHub Contribution Graph */}
+              <div className="github-activity">
+                <h3 className="github-activity-title">Contribution Activity</h3>
+                <a 
+                  href="https://github.com/arunreddy9595" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="github-link-btn"
+                >
+                  <GitHubIcon />
+                  <span>View Full Profile on GitHub</span>
+                  <ExternalLinkIcon />
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* Work Experience Section */}
           <section className="section" id="experience">
             <h2 className="section-title">
