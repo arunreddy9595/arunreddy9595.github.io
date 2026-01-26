@@ -962,7 +962,7 @@ function App() {
                 {/* GitHub Stats Card */}
                 <div className="github-stat-card">
                   <img 
-                    src="https://github-readme-stats.vercel.app/api?username=arunreddy9595&show_icons=true&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4&icon_color=89b4fa"
+                    src="https://github-readme-stats.vercel.app/api?username=arunreddy9595&show_icons=true&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4&icon_color=89b4fa&cache_seconds=1800&date=20260126"
                     alt="Arun's GitHub Stats"
                     loading="lazy"
                   />
@@ -971,7 +971,7 @@ function App() {
                 {/* Top Languages Card */}
                 <div className="github-stat-card">
                   <img 
-                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=arunreddy9595&layout=compact&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4"
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=arunreddy9595&layout=compact&theme=dark&hide_border=true&bg_color=1e1e2e&title_color=cdd6f4&text_color=cdd6f4&cache_seconds=1800&date=20260126"
                     alt="Top Languages"
                     loading="lazy"
                   />
@@ -981,7 +981,7 @@ function App() {
               {/* GitHub Streak Stats */}
               <div className="github-streak">
                 <img 
-                  src="https://github-readme-streak-stats.herokuapp.com/?user=arunreddy9595&theme=dark&hide_border=true&background=1e1e2e&ring=89b4fa&fire=f38ba8&currStreakLabel=cdd6f4"
+                  src="https://streak-stats.demolab.com/?user=arunreddy9595&theme=dark&hide_border=true&background=1e1e2e&ring=89b4fa&fire=f38ba8&currStreakLabel=cdd6f4&date_format=M%20j%5B%2C%20Y%5D"
                   alt="GitHub Streak Stats"
                   loading="lazy"
                 />
